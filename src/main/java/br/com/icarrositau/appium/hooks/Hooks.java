@@ -14,7 +14,7 @@ public class Hooks {
 	
 	
 	@Before
-	public void antesScenario(Scenario cenario) throws Exception {
+	public void antesScenario(io.cucumber.java.Scenario cenario) throws Exception {
 		
 		System.out.println("Irá rodar antes de cada cenário");
 		DriverFactory.getDriver();
