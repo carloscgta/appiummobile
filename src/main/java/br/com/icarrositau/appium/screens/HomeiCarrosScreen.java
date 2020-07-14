@@ -12,6 +12,15 @@ public class HomeiCarrosScreen extends BaseScreen {
 	
 	
 	@AndroidFindBy(accessibility = "")
-    MobileElement menu;
+    MobileElement buttonBuscar;
 
+
+/***********************MÉTODOS*****************************************/
+	
+public void clicarBotaoBuscar() throws InterruptedException {
+		
+		click(buttonBuscar);
+		
+		
+	}
 }
