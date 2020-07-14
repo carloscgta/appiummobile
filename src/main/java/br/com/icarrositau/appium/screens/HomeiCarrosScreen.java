@@ -1,0 +1,17 @@
+package br.com.icarrositau.appium.screens;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+
+public class HomeiCarrosScreen extends BaseScreen {
+
+	public HomeiCarrosScreen(AndroidDriver<?> driver) {
+		super(driver);
+	}
+	
+	
+	@AndroidFindBy(accessibility = "")
+    MobileElement menu;
+
+}
