@@ -3,11 +3,13 @@ package br.com.icarrositau.appium.screens;
 import org.openqa.selenium.support.PageFactory;
 
 import br.com.icarrositau.appium.core.DriverFactory;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class SceenGenerator extends DriverFactory{
 
-	public SceenGenerator(AndroidDriver<?> driver) {
+	public SceenGenerator(AppiumDriver<MobileElement> driver) {
 		// TODO Auto-generated constructor stub
 		this.driver= driver;
 	}

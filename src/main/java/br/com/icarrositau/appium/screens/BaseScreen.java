@@ -3,13 +3,15 @@ package br.com.icarrositau.appium.screens;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class BaseScreen extends SceenGenerator{
 
 
 	
-	public BaseScreen( AndroidDriver<?> driver) {
+	public BaseScreen( AppiumDriver<MobileElement> driver) {
 		// TODO Auto-generated constructor stub
 		super(driver);
 	}

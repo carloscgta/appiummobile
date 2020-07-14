@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.icarrositau.appium.screens.SceenGenerator;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
@@ -18,22 +19,26 @@ public class DriverFactory {
 	private static WebDriverWait wait;
 
 
-	protected static AndroidDriver<?> driver;
+	protected static AppiumDriver<MobileElement> driver;
 
-    public static  AndroidDriver<?> getDriver(){
+    public static  AppiumDriver<?> getDriver(){
         if(driver == null){
             conectar();
         }
         return driver;
     }
 
-    private static AndroidDriver<?> conectar() {
+    private static AppiumDriver<MobileElement> conectar() {
         File diretorioAplicacao = new File("app");
         File arquivoAplicacao = new File(diretorioAplicacao, "iCarros.apk");
 
         DesiredCapabilities capacidade = new DesiredCapabilities();
-        capacidade.setCapability("deviceName", "emulator-5554");
+        capacidade.setCapability("deviceName", "sdk_gphone_x86");
+        capacidade.setCapability("udid", "emulator-5554");
         capacidade.setCapability("platformName", "Android");
+        capacidade.setCapability("platformVersion", "11");
+        capacidade.setCapability("appPackage", "com.android.vending");
+        capacidade.setCapability("appActivity", "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
         capacidade.setCapability("app", arquivoAplicacao.getAbsolutePath());
         capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
         capacidade.setCapability("newCommandTimeout", 4600);
@@ -41,7 +46,8 @@ public class DriverFactory {
         capacidade.setCapability("resetKeyboard", true);
 
         try {
-            driver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), capacidade);
+        	URL url = new URL("http://0.0.0.0:4723/wd/hub");
+            driver = new AppiumDriver<MobileElement>(url, capacidade);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -56,7 +62,7 @@ public class DriverFactory {
     }
     
    
-	public static AndroidDriver<?> encerrarDriver() {
+	public static AppiumDriver<MobileElement> encerrarDriver() {
 		if (driver!= null) {
 			driver.quit();
 		}
