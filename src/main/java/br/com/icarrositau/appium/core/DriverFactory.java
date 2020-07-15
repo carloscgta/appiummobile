@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.com.icarrositau.appium.screens.SceenGenerator;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -18,26 +17,25 @@ import io.appium.java_client.remote.MobilePlatform;
 
 public class DriverFactory {
 
-	public static SceenGenerator page;
+//	public static SceenGenerator page;
 	private static WebDriverWait wait;
 
 
-	public static AppiumDriver<MobileElement> driver = null;
+	public static AndroidDriver<?> driver;
 
-    public static  AppiumDriver<MobileElement> getDriver(){
+    public static  AndroidDriver<?> getDriver(){
         if(driver == null){
             conectar();
         }
         return driver;
     }
 
-    private static AppiumDriver<MobileElement> conectar() {
+    public static AndroidDriver<?> conectar() {
     	   try {
-//    	File diretorioAplicacao = new File("app");
-//        File arquivoAplicacao = new File(diretorioAplicacao, "iCarros.apk");
+    	File diretorioAplicacao = new File("app");
+        File arquivoAplicacao = new File(diretorioAplicacao, "Base.apk");
 
         DesiredCapabilities capacidade = new DesiredCapabilities();
-        
         
         capacidade.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
         capacidade.setCapability(MobileCapabilityType.DEVICE_NAME, "sdk_gphone_x86");
@@ -45,7 +43,9 @@ public class DriverFactory {
         capacidade.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
         capacidade.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.android.vending");
         capacidade.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
-        
+        capacidade.setCapability(MobileCapabilityType.APP,  arquivoAplicacao.getAbsolutePath());
+        capacidade.setCapability("adbExecTimeout", 4600);
+        		capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
 //        capacidade.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
 //        capacidade.setCapability(MobileCapabilityType.APP, arquivoAplicacao.getAbsolutePath());
 //        capacidade.setCapability(MobileCapabilityType.NO_RESET, "true");
@@ -57,6 +57,7 @@ public class DriverFactory {
 //        capacidade.setCapability("appPackage", "com.android.vending");
 //        capacidade.setCapability("appActivity", "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
 //        capacidade.setCapability("adbExecTimeout", 4600);
+        		        		
 //        capacidade.setCapability("app", arquivoAplicacao.getAbsolutePath());
 //        capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
 //        
@@ -66,7 +67,7 @@ public class DriverFactory {
 
 //        UiAutomatoriCarrosItau
         	URL url = new URL("http://0.0.0.0:4723/wd/hub");
-            driver = new AppiumDriver<MobileElement>(url, capacidade);
+            driver = new AndroidDriver<MobileElement>(url, capacidade);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -76,7 +77,7 @@ public class DriverFactory {
 
 
    
-	public static AppiumDriver<MobileElement> encerrarDriver() {
+	public static AndroidDriver<?> encerrarDriver() {
 		if (driver!= null) {
 			driver.quit();
 		}
