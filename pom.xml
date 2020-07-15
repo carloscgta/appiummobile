@@ -12,78 +12,64 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
-
-  <dependencies>
-  	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependencies>
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
-		</dependency>
- <dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>3.141.59</version>
 		</dependency>
-		
-	 <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
-	<dependency>
-	    <groupId>io.appium</groupId>
-	    <artifactId>java-client</artifactId>
-	    <version>7.3.0</version>
-	</dependency>
-	
-<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13</version>
-			
+			<version>4.12</version>
 		</dependency>
-		
-
+	    <dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>7.3.0</version>
+		</dependency>
+       <dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.4</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.7.0</version>
+			<version>3.3</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-junit</artifactId>
-		    <version>6.2.2</version>
-		    <scope>test</scope>
+			<groupId>io.cucumber</groupId>
+			<artifactId>pro-plugin</artifactId>
+			<version>2.1.0</version>
+			<scope>test</scope>
 		</dependency>
-				
-				
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>1.2.5</version>
 		</dependency>
-	
-		</dependencies>
+	</dependencies>
 	
 	<build>
-	
 	<plugins>
-		
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
-				<configuration>
-					<includes>
-						<include>br/com/icarrositau/appium/runner/RunnerConsultaAppiCarros.java</include>
-						
-					</includes>
-					<parallel>all</parallel>
-					<threadCount>1</threadCount>
-				</configuration>
-			</plugin>
-			
-			</plugins>
+	
+	<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+        </configuration>
+    </plugin>
+    
+    </plugins>
+	
 	</build>
 	
 </project>
