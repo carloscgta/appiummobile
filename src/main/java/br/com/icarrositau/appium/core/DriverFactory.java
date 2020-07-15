@@ -12,6 +12,8 @@ import br.com.icarrositau.appium.screens.SceenGenerator;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.remote.MobilePlatform;
 
 public class DriverFactory {
 
@@ -19,9 +21,9 @@ public class DriverFactory {
 	private static WebDriverWait wait;
 
 
-	protected static AppiumDriver<MobileElement> driver;
+	public static AppiumDriver<MobileElement> driver = null;
 
-    public static  AppiumDriver<?> getDriver(){
+    public static  AppiumDriver<MobileElement> getDriver(){
         if(driver == null){
             conectar();
         }
@@ -29,23 +31,31 @@ public class DriverFactory {
     }
 
     private static AppiumDriver<MobileElement> conectar() {
-        File diretorioAplicacao = new File("app");
+    	   try {
+    	File diretorioAplicacao = new File("app");
         File arquivoAplicacao = new File(diretorioAplicacao, "iCarros.apk");
 
         DesiredCapabilities capacidade = new DesiredCapabilities();
-        capacidade.setCapability("deviceName", "sdk_gphone_x86");
-        capacidade.setCapability("udid", "emulator-5554");
-        capacidade.setCapability("platformName", "Android");
-        capacidade.setCapability("platformVersion", "11");
-        capacidade.setCapability("appPackage", "com.android.vending");
-        capacidade.setCapability("appActivity", "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
-        capacidade.setCapability("app", arquivoAplicacao.getAbsolutePath());
-        capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
-        capacidade.setCapability("newCommandTimeout", 4600);
-        capacidade.setCapability("unicodeKeyboard", true);
-        capacidade.setCapability("resetKeyboard", true);
+        
+        
+        capacidade.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
+        capacidade.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+        capacidade.setCapability(MobileCapabilityType.APP, arquivoAplicacao.getAbsolutePath());
+        capacidade.setCapability(MobileCapabilityType.NO_RESET, "true");
+        capacidade.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 4600);
+//        capacidade.setCapability("deviceName", "sdk_gphone_x86");
+//        capacidade.setCapability("udid", "emulator-5554");
+//        capacidade.setCapability("platformName", "Android");
+//        capacidade.setCapability("platformVersion", "11");
+//        capacidade.setCapability("appPackage", "com.android.vending");
+//        capacidade.setCapability("appActivity", "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
+//        capacidade.setCapability("app", arquivoAplicacao.getAbsolutePath());
+//        capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
+//        capacidade.setCapability("newCommandTimeout", 4600);
+//        capacidade.setCapability("unicodeKeyboard", true);
+//        capacidade.setCapability("resetKeyboard", true);
 
-        try {
+     
         	URL url = new URL("http://0.0.0.0:4723/wd/hub");
             driver = new AppiumDriver<MobileElement>(url, capacidade);
         } catch (MalformedURLException e) {
@@ -56,11 +66,6 @@ public class DriverFactory {
     }
 
 
-    public static WebDriverWait esperarpeloDriver(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        return wait;
-    }
-    
    
 	public static AppiumDriver<MobileElement> encerrarDriver() {
 		if (driver!= null) {

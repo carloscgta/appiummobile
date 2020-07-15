@@ -1,9 +1,12 @@
 package br.com.icarrositau.appium.steps;
 import br.com.icarrositau.appium.core.DriverFactory;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 
 
 public class ConsultarCarrosSteps {
@@ -12,17 +15,12 @@ public class ConsultarCarrosSteps {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-	
-
 	@Before
-	public void antesScenario(io.cucumber.java.Scenario cenario) throws Exception {
+	public void antesScenario(Scenario cenario) throws Exception {
 		
 		// Chamar métod de gerar relatório aqui
 		
 	}
-
 	
 	@Given("que estou com o app iCarros aberto")
 	public void que_estou_com_o_app_iCarros_aberto() {
@@ -66,4 +64,12 @@ public class ConsultarCarrosSteps {
 	   
 	}
 
+	
+	
+	@After
+	public void depoisScenario(Scenario cenario) throws Exception {
+		 System.out.println("This will run after the Scenario");
+		 DriverFactory.encerrarDriver();
+		 
+	}
 }

@@ -1,10 +1,11 @@
 package br.com.icarrositau.appium.hooks;
 
-import org.junit.AfterClass;
 
 import br.com.icarrositau.appium.core.DriverFactory;
-import io.cucumber.core.gherkin.Scenario;
-import io.cucumber.java.Before;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+
 
 public class Hooks {
 
@@ -12,9 +13,8 @@ public class Hooks {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 	@Before
-	public void antesScenario(io.cucumber.java.Scenario cenario) throws Exception {
+	public void antesScenario(Scenario cenario) throws Exception {
 		
 		System.out.println("Irá rodar antes de cada cenário");
 		DriverFactory.getDriver();
@@ -22,7 +22,7 @@ public class Hooks {
 	}
 
 	
-	@AfterClass
+	@After
 	public void depoisScenario(Scenario cenario) throws Exception {
 		 System.out.println("This will run after the Scenario");
 		 DriverFactory.encerrarDriver();
