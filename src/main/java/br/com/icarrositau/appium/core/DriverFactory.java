@@ -12,6 +12,7 @@ import br.com.icarrositau.appium.screens.SceenGenerator;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 
@@ -37,25 +38,27 @@ public class DriverFactory {
 
         DesiredCapabilities capacidade = new DesiredCapabilities();
         
-//        
-//        capacidade.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
-//        capacidade.setCapability(MobileCapabilityType.DEVICE_NAME, "sdk_gphone_x86");
-//        capacidade.setCapability(MobileCapabilityType.UDID, "emulator-5554");
-//        capacidade.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
-//        capacidade.setCapability(MobileCapabilityType.AD, "");
+        
+        capacidade.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
+        capacidade.setCapability(MobileCapabilityType.DEVICE_NAME, "sdk_gphone_x86");
+        capacidade.setCapability(MobileCapabilityType.UDID, "emulator-5554");
+        capacidade.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11");
+        capacidade.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.android.vending");
+        capacidade.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
+        
 //        capacidade.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
 //        capacidade.setCapability(MobileCapabilityType.APP, arquivoAplicacao.getAbsolutePath());
 //        capacidade.setCapability(MobileCapabilityType.NO_RESET, "true");
 //        capacidade.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 4600);
-        capacidade.setCapability("deviceName", "sdk_gphone_x86");
-        capacidade.setCapability("udid", "emulator-5554");
-        capacidade.setCapability("platformName", "Android");
-        capacidade.setCapability("platformVersion", "11");
-        capacidade.setCapability("appPackage", "com.android.vending");
-        capacidade.setCapability("appActivity", "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
-        capacidade.setCapability("adbExecTimeout", 4600);
+//        capacidade.setCapability("deviceName", "sdk_gphone_x86");
+//        capacidade.setCapability("udid", "emulator-5554");
+//        capacidade.setCapability("platformName", "Android");
+//        capacidade.setCapability("platformVersion", "11");
+//        capacidade.setCapability("appPackage", "com.android.vending");
+//        capacidade.setCapability("appActivity", "br.com.icarros.androidapp.ui.feirao.v2.Home.FeiraoActivity");
+//        capacidade.setCapability("adbExecTimeout", 4600);
 //        capacidade.setCapability("app", arquivoAplicacao.getAbsolutePath());
-        capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
+//        capacidade.setCapability("automationName", "UiAutomatoriCarrosItau");
 //        
 //        capacidade.setCapability("unicodeKeyboard", true);
 //        capacidade.setCapability("resetKeyboard", true);
